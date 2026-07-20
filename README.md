@@ -1,7 +1,7 @@
-# AI Writing Evaluator
+# Writing Quest Studio
 
 A free Streamlit web app that evaluates writing with Google's Gemini API.
-The interface is designed as a professional academic evaluator, a compact SaaS dashboard, a simple student tool, and a premium AI writing assistant.
+The interface is designed as a quest-style academic evaluator with a student tutorial, progress dashboard, premium revision feedback, and designed PDF report export.
 
 ## What to Build
 
@@ -13,6 +13,15 @@ For this project, focus on a web app first. Streamlit is faster and cheaper than
 - `requirements.txt` - Python packages for local install and Streamlit Community Cloud
 - `.streamlit/config.toml` - app theme
 - `.streamlit/secrets.toml.example` - example local secrets file
+
+## Features
+
+- Light grey and green quest-style interface
+- Sidebar logo and mission controls
+- Skippable tutorial for first-time users
+- XP/level dashboard to make evaluation feel exploratory
+- Academic writing assessment with rubric controls
+- PDF report download with designed formatting
 
 ## Run Locally
 
