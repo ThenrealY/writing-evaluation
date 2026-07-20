@@ -341,8 +341,36 @@ st.markdown(
         fill: #111827 !important;
     }
 
+    [data-testid="stSidebar"] div[data-baseweb="select"],
+    [data-testid="stSidebar"] div[data-baseweb="select"] > div,
+    [data-testid="stSidebar"] div[data-baseweb="select"] div[role="button"],
+    [data-testid="stSidebar"] div[data-baseweb="select"] div[role="combobox"],
+    [data-testid="stSidebar"] div[data-baseweb="select"] [aria-haspopup="listbox"],
+    [data-testid="stSidebar"] div[data-baseweb="select"] div[class*="control"],
+    [data-testid="stSidebar"] div[data-baseweb="select"] div[class*="ValueContainer"],
+    [data-testid="stSidebar"] div[data-baseweb="select"] div[class*="SingleValue"] {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+        color: #111827 !important;
+        -webkit-text-fill-color: #111827 !important;
+    }
+
+    [data-testid="stSidebar"] div[data-baseweb="select"] input,
+    [data-testid="stSidebar"] div[data-baseweb="select"] span,
+    [data-testid="stSidebar"] div[data-baseweb="select"] p {
+        color: #111827 !important;
+        -webkit-text-fill-color: #111827 !important;
+    }
+
+    [data-testid="stSidebar"] div[data-baseweb="select"] svg,
+    [data-testid="stSidebar"] div[data-baseweb="select"] path {
+        color: #111827 !important;
+        fill: #111827 !important;
+    }
+
     .stMultiSelect div[data-baseweb="tag"],
     section[data-testid="stSidebar"] .stMultiSelect div[data-baseweb="tag"],
+    [data-testid="stSidebar"] .stMultiSelect div[data-baseweb="tag"],
     div[data-baseweb="tag"] {
         background: var(--primary-dark) !important;
         background-color: var(--primary-dark) !important;
@@ -353,15 +381,18 @@ st.markdown(
 
     .stMultiSelect div[data-baseweb="tag"] *,
     section[data-testid="stSidebar"] .stMultiSelect div[data-baseweb="tag"] *,
+    [data-testid="stSidebar"] .stMultiSelect div[data-baseweb="tag"] *,
     div[data-baseweb="tag"] span,
     div[data-baseweb="tag"] div,
     div[data-baseweb="tag"] p {
         color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
         font-weight: 700 !important;
     }
 
     .stMultiSelect div[data-baseweb="tag"] svg,
     section[data-testid="stSidebar"] .stMultiSelect div[data-baseweb="tag"] svg,
+    [data-testid="stSidebar"] .stMultiSelect div[data-baseweb="tag"] svg,
     div[data-baseweb="tag"] svg,
     div[data-baseweb="tag"] path {
         color: #ffffff !important;
