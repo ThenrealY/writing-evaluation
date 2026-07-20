@@ -39,25 +39,27 @@ st.markdown(
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
     :root {
-        --primary: #22c55e;
-        --primary-dark: #047857;
+        --primary: #86efac;
+        --primary-dark: #4ade80;
         --primary-soft: #dcfce7;
-        --bg-main: #0b3d2a;
+        --control-bg: #f0fdf4;
+        --control-bg-hover: #dcfce7;
+        --bg-main: #f0fdf4;
         --surface: #ffffff;
         --text-main: #111827;
         --text-muted: #6b7280;
         --border: #d9e5de;
         --danger: #dc2626;
         --warning: #b45309;
-        --shadow: 0 18px 50px rgba(6, 53, 31, 0.18);
+        --shadow: 0 18px 50px rgba(17, 24, 39, 0.11);
         --glass: rgba(255, 255, 255, 0.94);
     }
 
     .stApp {
         background:
-            radial-gradient(circle at 12% 8%, rgba(187, 247, 208, 0.92) 0%, rgba(187, 247, 208, 0) 28%),
-            linear-gradient(135deg, #ecfdf5 0%, #86efac 24%, #16a34a 48%, #047857 70%, #052e1f 100%);
-        background-size: 180% 180%;
+            radial-gradient(circle at 12% 8%, rgba(187, 247, 208, 0.78) 0%, rgba(187, 247, 208, 0) 30%),
+            linear-gradient(135deg, #ffffff 0%, #f0fdf4 32%, #dcfce7 68%, #bbf7d0 100%);
+        background-size: 140% 140%;
         background-attachment: fixed;
         animation: modernGreenFlow 16s ease-in-out infinite alternate;
         color: var(--text-main);
@@ -115,8 +117,8 @@ st.markdown(
         border-radius: 10px;
         display: grid;
         place-items: center;
-        background: linear-gradient(135deg, #22c55e, #047857);
-        color: #ffffff;
+        background: linear-gradient(135deg, #f0fdf4, #bbf7d0);
+        color: #111827;
         font-weight: 800;
     }
 
@@ -139,7 +141,7 @@ st.markdown(
         gap: 1rem;
         align-items: stretch;
         background:
-            linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(240, 253, 244, 0.94));
+            linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(240, 253, 244, 0.98));
         border: 1px solid rgba(255, 255, 255, 0.72);
         border-radius: 16px;
         padding: clamp(1.1rem, 3vw, 1.65rem);
@@ -152,7 +154,7 @@ st.markdown(
         display: inline-flex;
         align-items: center;
         gap: 0.45rem;
-        color: #047857;
+        color: #374151;
         font-size: 0.76rem;
         font-weight: 800;
         text-transform: uppercase;
@@ -164,13 +166,13 @@ st.markdown(
         width: 0.62rem;
         height: 0.62rem;
         border-radius: 999px;
-        background: #22c55e;
-        box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.16);
+        background: #86efac;
+        box-shadow: 0 0 0 5px rgba(134, 239, 172, 0.28);
     }
 
     .hero-title {
         margin: 0;
-        color: #052e1f;
+        color: #111827;
         font-size: clamp(2.35rem, 5vw, 4.6rem);
         line-height: 0.95;
         font-weight: 850;
@@ -185,7 +187,7 @@ st.markdown(
     }
 
     .hero-level-card {
-        border: 1px solid #b7e4c7;
+        border: 1px solid #bbf7d0;
         border-radius: 14px;
         background: #ffffff;
         padding: 1rem;
@@ -203,7 +205,7 @@ st.markdown(
 
     .hero-level-card strong {
         display: block;
-        color: #052e1f;
+        color: #111827;
         font-size: 1.2rem;
         line-height: 1.25;
         margin-bottom: 0.7rem;
@@ -261,51 +263,70 @@ st.markdown(
     }
 
     .xp-bar-fill {
-        background: linear-gradient(90deg, #22c55e, #047857);
+        background: linear-gradient(90deg, #dcfce7, #86efac);
         height: 100%;
         border-radius: 10px;
         transition: width 0.5s ease;
     }
 
     .stButton > button,
-    .stDownloadButton > button {
-        background: #ffffff !important;
-        border: 1px solid #b7e4c7 !important;
+    .stDownloadButton > button,
+    button[data-testid*="stBaseButton"],
+    [data-testid="stBaseButton-secondary"],
+    [data-testid="stBaseButton-primary"],
+    [data-testid="stBaseButton-primaryFormSubmit"] {
+        background: var(--control-bg) !important;
+        background-color: var(--control-bg) !important;
+        border: 1px solid #bbf7d0 !important;
         border-radius: 10px !important;
-        color: #065f46 !important;
+        color: #111827 !important;
         min-height: 2.65rem;
         font-weight: 700 !important;
         transition: all 0.2s ease;
+        box-shadow: none !important;
     }
 
     .stButton > button *,
-    .stDownloadButton > button * {
-        color: inherit !important;
+    .stDownloadButton > button *,
+    button[data-testid*="stBaseButton"] *,
+    [data-testid="stBaseButton-secondary"] *,
+    [data-testid="stBaseButton-primary"] *,
+    [data-testid="stBaseButton-primaryFormSubmit"] * {
+        color: #111827 !important;
+        -webkit-text-fill-color: #111827 !important;
     }
 
-    .stButton > button[kind="primary"] {
-        background: linear-gradient(135deg, #22c55e, #047857) !important;
-        border: none !important;
-        color: #ffffff !important;
+    .stButton > button[kind="primary"],
+    button[data-testid="stBaseButton-primary"],
+    [data-testid="stBaseButton-primary"],
+    [data-testid="stBaseButton-primaryFormSubmit"] {
+        background: linear-gradient(135deg, #dcfce7, #bbf7d0) !important;
+        background-color: #dcfce7 !important;
+        border: 1px solid #86efac !important;
+        color: #111827 !important;
     }
 
     .stButton > button:hover,
-    .stDownloadButton > button:hover {
+    .stDownloadButton > button:hover,
+    button[data-testid*="stBaseButton"]:hover {
+        background: var(--control-bg-hover) !important;
+        background-color: var(--control-bg-hover) !important;
         transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        box-shadow: 0 4px 12px rgba(17, 24, 39, 0.08) !important;
     }
 
     .stTextArea textarea {
         border-radius: 12px;
-        border-color: var(--border);
+        border-color: #bbf7d0 !important;
         min-height: 400px;
         font-size: 1rem;
         line-height: 1.55;
-        background: #ffffff;
+        background: #ffffff !important;
+        color: #111827 !important;
     }
 
     .stButton > button[kind="primary"] * {
-        color: #ffffff !important;
+        color: #111827 !important;
     }
 
     .stTextInput input,
@@ -313,24 +334,34 @@ st.markdown(
     .stSelectbox div[data-baseweb="select"],
     .stMultiSelect div[data-baseweb="select"] {
         border-radius: 12px;
-        border-color: var(--border) !important;
-        background: #ffffff !important;
+        border-color: #bbf7d0 !important;
+        background: var(--control-bg) !important;
+        background-color: var(--control-bg) !important;
         color: #111827 !important;
     }
 
+    [data-testid="stSelectbox"] [data-baseweb="select"],
+    [data-testid="stMultiSelect"] [data-baseweb="select"],
     .stSelectbox div[data-baseweb="select"] *,
     .stMultiSelect div[data-baseweb="select"] *,
     section[data-testid="stSidebar"] .stSelectbox div[data-baseweb="select"] *,
     section[data-testid="stSidebar"] .stMultiSelect div[data-baseweb="select"] * {
         color: #111827 !important;
+        -webkit-text-fill-color: #111827 !important;
     }
 
+    [data-testid="stSelectbox"] [data-baseweb="select"] > div,
+    [data-testid="stSelectbox"] [data-baseweb="select"] > div > div,
+    [data-testid="stMultiSelect"] [data-baseweb="select"] > div,
+    [data-testid="stMultiSelect"] [data-baseweb="select"] > div > div,
     .stSelectbox div[data-baseweb="select"] > div,
     .stMultiSelect div[data-baseweb="select"] > div,
     section[data-testid="stSidebar"] .stSelectbox div[data-baseweb="select"] > div,
     section[data-testid="stSidebar"] .stMultiSelect div[data-baseweb="select"] > div {
-        background: #ffffff !important;
-        background-color: #ffffff !important;
+        background: var(--control-bg) !important;
+        background-color: var(--control-bg) !important;
+        color: #111827 !important;
+        -webkit-text-fill-color: #111827 !important;
     }
 
     .stSelectbox div[data-baseweb="select"] svg,
@@ -343,16 +374,43 @@ st.markdown(
 
     [data-testid="stSidebar"] div[data-baseweb="select"],
     [data-testid="stSidebar"] div[data-baseweb="select"] > div,
+    [data-testid="stSidebar"] div[data-baseweb="select"] > div > div,
     [data-testid="stSidebar"] div[data-baseweb="select"] div[role="button"],
     [data-testid="stSidebar"] div[data-baseweb="select"] div[role="combobox"],
     [data-testid="stSidebar"] div[data-baseweb="select"] [aria-haspopup="listbox"],
     [data-testid="stSidebar"] div[data-baseweb="select"] div[class*="control"],
     [data-testid="stSidebar"] div[data-baseweb="select"] div[class*="ValueContainer"],
     [data-testid="stSidebar"] div[data-baseweb="select"] div[class*="SingleValue"] {
+        background: var(--control-bg) !important;
+        background-color: var(--control-bg) !important;
+        color: #111827 !important;
+        -webkit-text-fill-color: #111827 !important;
+    }
+
+    div[data-baseweb="popover"],
+    div[data-baseweb="menu"],
+    ul[role="listbox"],
+    div[role="listbox"] {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+        color: #111827 !important;
+    }
+
+    li[role="option"],
+    div[role="option"] {
         background: #ffffff !important;
         background-color: #ffffff !important;
         color: #111827 !important;
         -webkit-text-fill-color: #111827 !important;
+    }
+
+    li[role="option"]:hover,
+    div[role="option"]:hover,
+    li[aria-selected="true"],
+    div[aria-selected="true"] {
+        background: var(--control-bg-hover) !important;
+        background-color: var(--control-bg-hover) !important;
+        color: #111827 !important;
     }
 
     [data-testid="stSidebar"] div[data-baseweb="select"] input,
@@ -372,9 +430,9 @@ st.markdown(
     section[data-testid="stSidebar"] .stMultiSelect div[data-baseweb="tag"],
     [data-testid="stSidebar"] .stMultiSelect div[data-baseweb="tag"],
     div[data-baseweb="tag"] {
-        background: var(--primary-dark) !important;
-        background-color: var(--primary-dark) !important;
-        border: 1px solid #047857 !important;
+        background: #f0fdf4 !important;
+        background-color: #f0fdf4 !important;
+        border: 1px solid #86efac !important;
         border-radius: 8px !important;
         box-shadow: none !important;
     }
@@ -385,8 +443,8 @@ st.markdown(
     div[data-baseweb="tag"] span,
     div[data-baseweb="tag"] div,
     div[data-baseweb="tag"] p {
-        color: #ffffff !important;
-        -webkit-text-fill-color: #ffffff !important;
+        color: #111827 !important;
+        -webkit-text-fill-color: #111827 !important;
         font-weight: 700 !important;
     }
 
@@ -395,8 +453,8 @@ st.markdown(
     [data-testid="stSidebar"] .stMultiSelect div[data-baseweb="tag"] svg,
     div[data-baseweb="tag"] svg,
     div[data-baseweb="tag"] path {
-        color: #ffffff !important;
-        fill: #ffffff !important;
+        color: #111827 !important;
+        fill: #111827 !important;
     }
 
     .report-output {
@@ -580,7 +638,7 @@ def make_pdf_report(report: str, context: dict[str, str], stats: dict[str, str])
         fontName="Helvetica-Bold",
         fontSize=22,
         leading=26,
-        textColor=colors.HexColor("#059669"),
+        textColor=colors.HexColor("#111827"),
         spaceAfter=8,
     )
     subtitle_style = ParagraphStyle(
@@ -624,7 +682,7 @@ def make_pdf_report(report: str, context: dict[str, str], stats: dict[str, str])
         TableStyle(
             [
                 ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#d1fae5")),
-                ("TEXTCOLOR", (0, 0), (-1, 0), colors.HexColor("#065f46")),
+                ("TEXTCOLOR", (0, 0), (-1, 0), colors.HexColor("#111827")),
                 ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
                 ("FONTNAME", (0, 1), (0, -1), "Helvetica-Bold"),
                 ("FONTSIZE", (0, 0), (-1, -1), 8.5),
