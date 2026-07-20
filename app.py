@@ -44,21 +44,21 @@ st.markdown(
         --primary-soft: #dcfce7;
         --control-bg: #f0fdf4;
         --control-bg-hover: #dcfce7;
-        --bg-main: #f0fdf4;
+        --bg-main: #edf2ef;
         --surface: #ffffff;
         --text-main: #111827;
         --text-muted: #6b7280;
-        --border: #d9e5de;
+        --border: #c9d8d0;
         --danger: #dc2626;
         --warning: #b45309;
-        --shadow: 0 18px 50px rgba(17, 24, 39, 0.11);
-        --glass: rgba(255, 255, 255, 0.94);
+        --shadow: 0 18px 46px rgba(17, 24, 39, 0.14);
+        --glass: rgba(248, 250, 252, 0.96);
     }
 
     .stApp {
         background:
-            radial-gradient(circle at 12% 8%, rgba(187, 247, 208, 0.78) 0%, rgba(187, 247, 208, 0) 30%),
-            linear-gradient(135deg, #ffffff 0%, #f0fdf4 32%, #dcfce7 68%, #bbf7d0 100%);
+            radial-gradient(circle at 12% 8%, rgba(187, 247, 208, 0.55) 0%, rgba(187, 247, 208, 0) 28%),
+            linear-gradient(135deg, #e5e7eb 0%, #edf2ef 28%, #e4f7eb 66%, #cdeed8 100%);
         background-size: 140% 140%;
         background-attachment: fixed;
         animation: modernGreenFlow 16s ease-in-out infinite alternate;
@@ -85,7 +85,7 @@ st.markdown(
 
     section[data-testid="stSidebar"] {
         background:
-            linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 253, 244, 0.98) 100%) !important;
+            linear-gradient(180deg, rgba(248, 250, 252, 0.99) 0%, rgba(237, 242, 239, 0.99) 100%) !important;
         border-right: 1px solid var(--border);
     }
 
@@ -103,12 +103,12 @@ st.markdown(
         display: flex;
         align-items: center;
         gap: 0.75rem;
-        background: #ffffff;
+        background: #f8fafc;
         border: 1px solid var(--border);
         border-radius: 12px;
         padding: 0.9rem;
         margin: 0.1rem 0 1rem;
-        box-shadow: 0 12px 28px rgba(6, 53, 31, 0.08);
+        box-shadow: 0 12px 28px rgba(17, 24, 39, 0.08);
     }
 
     .brand-mark {
@@ -141,8 +141,8 @@ st.markdown(
         gap: 1rem;
         align-items: stretch;
         background:
-            linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(240, 253, 244, 0.98));
-        border: 1px solid rgba(255, 255, 255, 0.72);
+            linear-gradient(135deg, rgba(248, 250, 252, 0.98), rgba(240, 253, 244, 0.98));
+        border: 1px solid #c9d8d0;
         border-radius: 16px;
         padding: clamp(1.1rem, 3vw, 1.65rem);
         margin-bottom: 1rem;
@@ -187,11 +187,11 @@ st.markdown(
     }
 
     .hero-level-card {
-        border: 1px solid #bbf7d0;
+        border: 1px solid #c9d8d0;
         border-radius: 14px;
-        background: #ffffff;
+        background: #f8fafc;
         padding: 1rem;
-        box-shadow: 0 14px 34px rgba(6, 53, 31, 0.11);
+        box-shadow: 0 14px 34px rgba(17, 24, 39, 0.1);
     }
 
     .hero-level-card label {
@@ -228,7 +228,7 @@ st.markdown(
     }
 
     .mini-metric {
-        background: rgba(255, 255, 255, 0.96);
+        background: rgba(248, 250, 252, 0.98);
         border: 1px solid var(--border);
         padding: 0.92rem 1rem;
         border-radius: 14px;
@@ -458,7 +458,7 @@ st.markdown(
     }
 
     .report-output {
-        background: rgba(255, 255, 255, 0.98);
+        background: rgba(248, 250, 252, 0.98);
         padding: 2rem;
         border-radius: 16px;
         border: 1px solid var(--border);
@@ -473,7 +473,7 @@ st.markdown(
         padding: 0.9rem 1rem;
         margin: 0.85rem 0 1rem;
         line-height: 1.55;
-        background: #ffffff;
+        background: #f8fafc;
         border: 1px solid var(--border);
         box-shadow: var(--shadow);
     }
@@ -494,7 +494,7 @@ st.markdown(
     }
 
     div[data-testid="stVerticalBlockBorderWrapper"] {
-        background: rgba(255, 255, 255, 0.98);
+        background: rgba(248, 250, 252, 0.98);
         border: 1px solid var(--border);
         border-radius: 16px;
         box-shadow: var(--shadow);
@@ -502,7 +502,7 @@ st.markdown(
 
     .stTabs [data-baseweb="tab-list"] {
         gap: 0.5rem;
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(248, 250, 252, 0.96);
         border: 1px solid var(--border);
         border-radius: 14px;
         padding: 0.35rem;
@@ -519,7 +519,7 @@ st.markdown(
     }
 
     div[data-testid="stExpander"] {
-        background: #ffffff;
+        background: #f8fafc;
         border: 1px solid var(--border);
         border-radius: 12px;
         box-shadow: var(--shadow);
