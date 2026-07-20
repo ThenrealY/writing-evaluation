@@ -62,3 +62,16 @@ GEMINI_API_KEY = "your_actual_api_key"
 8. Deploy the app.
 
 Do not commit `.streamlit/secrets.toml` to GitHub. It contains your private API key.
+
+## Fix Gemini 401 Errors
+
+If the app shows a 401 authentication error, your Gemini key is being rejected by Google.
+
+Try this:
+
+1. Go to <https://aistudio.google.com/app/apikey>.
+2. Create a fresh Gemini API key.
+3. Copy only the key value.
+4. Replace `GEMINI_API_KEY` in `.streamlit/secrets.toml`.
+5. In Streamlit Community Cloud, also update the app's Secrets setting.
+6. Reboot or redeploy the app.
