@@ -1,6 +1,7 @@
 # AI Writing Evaluator
 
 A free Streamlit web app that evaluates writing with Google's Gemini API.
+The interface is designed as a professional academic evaluator, a compact SaaS dashboard, a simple student tool, and a premium AI writing assistant.
 
 ## What to Build
 
