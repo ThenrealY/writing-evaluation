@@ -53,8 +53,17 @@ st.markdown(
 
     .stApp {
         background:
-            linear-gradient(135deg, #f0fff4 0%, #c8efd5 34%, #5fac7c 68%, #0f5132 100%);
+            linear-gradient(120deg, #effff3 0%, #b7ecc7 26%, #4fa86e 54%, #127346 76%, #06351f 100%);
+        background-size: 260% 260%;
+        background-attachment: fixed;
+        animation: movingGreenGradient 18s ease-in-out infinite alternate;
         color: var(--text);
+    }
+
+    @keyframes movingGreenGradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 35%; }
+        100% { background-position: 35% 100%; }
     }
 
     .main .block-container {
@@ -391,9 +400,9 @@ st.markdown(
     .stMultiSelect div[data-baseweb="tag"],
     [data-testid="stSidebar"] .stMultiSelect div[data-baseweb="tag"],
     div[data-baseweb="tag"] {
-        background-color: #eaf8ef !important;
-        background: #eaf8ef !important;
-        border: 1px solid #9fd5b4 !important;
+        background-color: #0f6d4c !important;
+        background: #0f6d4c !important;
+        border: 1px solid #0b5138 !important;
         border-radius: 8px !important;
         box-shadow: none !important;
     }
@@ -401,16 +410,18 @@ st.markdown(
     .stMultiSelect div[data-baseweb="tag"] *,
     [data-testid="stSidebar"] .stMultiSelect div[data-baseweb="tag"] *,
     div[data-baseweb="tag"] span,
-    div[data-baseweb="tag"] div {
-        color: #14532d !important;
+    div[data-baseweb="tag"] div,
+    div[data-baseweb="tag"] p {
+        color: #ffffff !important;
         font-weight: 700 !important;
     }
 
     .stMultiSelect div[data-baseweb="tag"] svg,
     [data-testid="stSidebar"] .stMultiSelect div[data-baseweb="tag"] svg,
-    div[data-baseweb="tag"] svg {
-        color: #14532d !important;
-        fill: #14532d !important;
+    div[data-baseweb="tag"] svg,
+    div[data-baseweb="tag"] path {
+        color: #ffffff !important;
+        fill: #ffffff !important;
     }
 
     .stButton > button,
@@ -728,7 +739,7 @@ def friendly_api_error(exc: Exception, api_key: str | None) -> UserFacingAPIErro
     if is_auth_error(exc):
         if api_key and api_key.startswith("AQ."):
             return UserFacingAPIError(
-                "Google rejected this AQ authorization key. Create a fresh key in Google AI Studio and update Streamlit secrets."
+                "Google rejected the Gemini connection. Create a fresh API key in Google AI Studio and update Streamlit secrets."
             )
         return UserFacingAPIError(
             "Google rejected the Gemini API key. Create a new key in Google AI Studio, copy only the key text, and update GEMINI_API_KEY."
@@ -1019,18 +1030,6 @@ else:
         <div class="success-alert">
             <strong>Gemini credential detected.</strong>
             Status: <strong>{api_status}</strong>. {api_status_note}
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-if api_ready and api_key and api_key.startswith("AQ."):
-    st.markdown(
-        """
-        <div class="info-alert">
-            <strong>Note:</strong> Your key is an <code>AQ</code> authorization key.
-            If Google returns a 401 authentication error, create a fresh Gemini key in AI Studio,
-            then replace <code>GEMINI_API_KEY</code> in Streamlit Secrets.
         </div>
         """,
         unsafe_allow_html=True,
