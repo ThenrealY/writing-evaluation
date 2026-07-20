@@ -39,28 +39,40 @@ st.markdown(
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
     :root {
-        --primary: #10b981;
-        --primary-dark: #059669;
-        --primary-soft: #d1fae5;
-        --bg-main: #f9fafb;
+        --primary: #22c55e;
+        --primary-dark: #047857;
+        --primary-soft: #dcfce7;
+        --bg-main: #0b3d2a;
         --surface: #ffffff;
         --text-main: #111827;
         --text-muted: #6b7280;
-        --border: #e5e7eb;
+        --border: #d9e5de;
         --danger: #dc2626;
         --warning: #b45309;
-        --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        --shadow: 0 18px 50px rgba(6, 53, 31, 0.18);
+        --glass: rgba(255, 255, 255, 0.94);
     }
 
     .stApp {
-        background-color: var(--bg-main);
+        background:
+            radial-gradient(circle at 12% 8%, rgba(187, 247, 208, 0.92) 0%, rgba(187, 247, 208, 0) 28%),
+            linear-gradient(135deg, #ecfdf5 0%, #86efac 24%, #16a34a 48%, #047857 70%, #052e1f 100%);
+        background-size: 180% 180%;
+        background-attachment: fixed;
+        animation: modernGreenFlow 16s ease-in-out infinite alternate;
         color: var(--text-main);
         font-family: 'Inter', sans-serif;
     }
 
+    @keyframes modernGreenFlow {
+        0% { background-position: 0% 20%; }
+        50% { background-position: 80% 45%; }
+        100% { background-position: 35% 100%; }
+    }
+
     .main .block-container {
         max-width: 1180px;
-        padding-top: 1.6rem;
+        padding-top: 1.4rem;
         padding-bottom: 3rem;
     }
 
@@ -70,7 +82,8 @@ st.markdown(
     }
 
     section[data-testid="stSidebar"] {
-        background-color: #ffffff !important;
+        background:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 253, 244, 0.98) 100%) !important;
         border-right: 1px solid var(--border);
     }
 
@@ -88,12 +101,12 @@ st.markdown(
         display: flex;
         align-items: center;
         gap: 0.75rem;
-        background: var(--surface);
+        background: #ffffff;
         border: 1px solid var(--border);
         border-radius: 12px;
         padding: 0.9rem;
         margin: 0.1rem 0 1rem;
-        box-shadow: var(--shadow);
+        box-shadow: 0 12px 28px rgba(6, 53, 31, 0.08);
     }
 
     .brand-mark {
@@ -102,7 +115,7 @@ st.markdown(
         border-radius: 10px;
         display: grid;
         place-items: center;
-        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        background: linear-gradient(135deg, #22c55e, #047857);
         color: #ffffff;
         font-weight: 800;
     }
@@ -120,50 +133,104 @@ st.markdown(
         margin-top: 0.15rem;
     }
 
-    .app-title {
-        margin: 0;
-        font-size: clamp(2rem, 4vw, 3.2rem);
-        line-height: 1;
+    .modern-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.6fr) minmax(260px, 0.55fr);
+        gap: 1rem;
+        align-items: stretch;
+        background:
+            linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(240, 253, 244, 0.94));
+        border: 1px solid rgba(255, 255, 255, 0.72);
+        border-radius: 16px;
+        padding: clamp(1.1rem, 3vw, 1.65rem);
+        margin-bottom: 1rem;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(14px);
+    }
+
+    .hero-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        color: #047857;
+        font-size: 0.76rem;
         font-weight: 800;
+        text-transform: uppercase;
+        margin-bottom: 0.55rem;
     }
 
-    .app-subtitle {
-        color: var(--text-muted);
-        font-size: 1rem;
-        line-height: 1.55;
+    .hero-kicker::before {
+        content: "";
+        width: 0.62rem;
+        height: 0.62rem;
+        border-radius: 999px;
+        background: #22c55e;
+        box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.16);
+    }
+
+    .hero-title {
+        margin: 0;
+        color: #052e1f;
+        font-size: clamp(2.35rem, 5vw, 4.6rem);
+        line-height: 0.95;
+        font-weight: 850;
+    }
+
+    .hero-copy {
+        color: #334155;
+        font-size: 1.02rem;
+        line-height: 1.65;
         max-width: 760px;
-        margin-top: 0.55rem;
+        margin: 0.75rem 0 0;
     }
 
-    .level-line {
-        color: var(--text-muted);
-        font-weight: 700;
-        margin-top: 0.85rem;
+    .hero-level-card {
+        border: 1px solid #b7e4c7;
+        border-radius: 14px;
+        background: #ffffff;
+        padding: 1rem;
+        box-shadow: 0 14px 34px rgba(6, 53, 31, 0.11);
+    }
+
+    .hero-level-card label {
+        display: block;
+        color: #64748b;
+        font-size: 0.72rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        margin-bottom: 0.25rem;
+    }
+
+    .hero-level-card strong {
+        display: block;
+        color: #052e1f;
+        font-size: 1.2rem;
+        line-height: 1.25;
+        margin-bottom: 0.7rem;
     }
 
     .glass-card {
-        background: var(--surface);
+        background: var(--glass);
         border: 1px solid var(--border);
-        border-radius: 12px;
+        border-radius: 16px;
         padding: 1.5rem;
         margin-bottom: 1rem;
         box-shadow: var(--shadow);
     }
 
     .metric-row {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
         gap: 1rem;
         margin: 1rem 0 1.5rem;
-        overflow-x: auto;
-        padding-bottom: 0.15rem;
     }
 
     .mini-metric {
-        background: #ffffff;
+        background: rgba(255, 255, 255, 0.96);
         border: 1px solid var(--border);
-        padding: 0.75rem 1rem;
-        border-radius: 8px;
-        min-width: 145px;
+        padding: 0.92rem 1rem;
+        border-radius: 14px;
+        min-width: 0;
         box-shadow: var(--shadow);
     }
 
@@ -185,7 +252,7 @@ st.markdown(
     }
 
     .xp-bar-bg {
-        background: #e5e7eb;
+        background: #d1fae5;
         height: 7px;
         border-radius: 10px;
         margin-top: 0.55rem;
@@ -194,7 +261,7 @@ st.markdown(
     }
 
     .xp-bar-fill {
-        background: var(--primary);
+        background: linear-gradient(90deg, #22c55e, #047857);
         height: 100%;
         border-radius: 10px;
         transition: width 0.5s ease;
@@ -202,14 +269,14 @@ st.markdown(
 
     .stButton > button,
     .stDownloadButton > button {
-        border-radius: 8px !important;
+        border-radius: 10px !important;
         min-height: 2.65rem;
         font-weight: 700 !important;
         transition: all 0.2s ease;
     }
 
     .stButton > button[kind="primary"] {
-        background: var(--primary) !important;
+        background: linear-gradient(135deg, #22c55e, #047857) !important;
         border: none !important;
         color: #ffffff !important;
     }
@@ -221,7 +288,7 @@ st.markdown(
     }
 
     .stTextArea textarea {
-        border-radius: 8px;
+        border-radius: 12px;
         border-color: var(--border);
         min-height: 400px;
         font-size: 1rem;
@@ -232,7 +299,7 @@ st.markdown(
     .stTextInput input,
     .stSelectbox div[data-baseweb="select"],
     .stMultiSelect div[data-baseweb="select"] {
-        border-radius: 8px;
+        border-radius: 12px;
         border-color: var(--border);
         background: #ffffff;
     }
@@ -265,9 +332,9 @@ st.markdown(
     }
 
     .report-output {
-        background: #ffffff;
+        background: rgba(255, 255, 255, 0.98);
         padding: 2rem;
-        border-radius: 8px;
+        border-radius: 16px;
         border: 1px solid var(--border);
         line-height: 1.6;
         box-shadow: var(--shadow);
@@ -276,7 +343,7 @@ st.markdown(
     .setup-alert,
     .api-help,
     .soft-alert {
-        border-radius: 8px;
+        border-radius: 12px;
         padding: 0.9rem 1rem;
         margin: 0.85rem 0 1rem;
         line-height: 1.55;
@@ -300,13 +367,29 @@ st.markdown(
         color: var(--text-main);
     }
 
+    div[data-testid="stVerticalBlockBorderWrapper"] {
+        background: rgba(255, 255, 255, 0.98);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+    }
+
     .stTabs [data-baseweb="tab-list"] {
         gap: 0.5rem;
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 0.35rem;
+        box-shadow: 0 12px 30px rgba(6, 53, 31, 0.12);
     }
 
     .stTabs [data-baseweb="tab"] {
-        border-radius: 8px 8px 0 0;
+        border-radius: 10px;
         font-weight: 700;
+    }
+
+    .stTabs [data-baseweb="tab"] p {
+        color: var(--text-main) !important;
     }
 
     div[data-testid="stExpander"] {
@@ -317,12 +400,12 @@ st.markdown(
     }
 
     @media (max-width: 760px) {
-        .metric-row {
-            flex-direction: column;
+        .modern-hero {
+            grid-template-columns: 1fr;
         }
 
-        .mini-metric {
-            min-width: 100%;
+        .metric-row {
+            grid-template-columns: 1fr;
         }
     }
     </style>
@@ -787,26 +870,31 @@ xp = calculate_xp(words, len(rubric_focus), bool(purpose.strip()), "latest_repor
 level = level_from_xp(xp)
 xp_percent = int((xp / 500) * 100)
 
-header_left, header_right = st.columns([2.1, 0.9])
-with header_left:
-    st.markdown('<h1 class="app-title">Writing Quest Studio</h1>', unsafe_allow_html=True)
-    st.markdown(
-        """
-        <div class="app-subtitle">
-            A clean academic writing evaluator for essays, reports, emails, and revision coaching.
+st.markdown(
+    f"""
+    <section class="modern-hero">
+        <div>
+            <div class="hero-kicker">Modern writing evaluator</div>
+            <h1 class="hero-title">Writing Quest Studio</h1>
+            <p class="hero-copy">
+                A polished AI writing dashboard for academic feedback, revision coaching,
+                benchmark checks, and PDF report export.
+            </p>
         </div>
-        """,
-        unsafe_allow_html=True,
-    )
-    st.markdown(
-        f"""
-        <div class="level-line">Level: {level} | {xp}/500 XP</div>
-        <div class="xp-bar-bg"><div class="xp-bar-fill" style="width:{xp_percent}%;"></div></div>
-        """,
-        unsafe_allow_html=True,
-    )
+        <aside class="hero-level-card">
+            <label>Explorer level</label>
+            <strong>{level}</strong>
+            <div class="xp-bar-bg"><div class="xp-bar-fill" style="width:{xp_percent}%;"></div></div>
+            <label style="margin-top:0.65rem;">Progress</label>
+            <strong>{xp}/500 XP</strong>
+        </aside>
+    </section>
+    """,
+    unsafe_allow_html=True,
+)
 
-with header_right:
+guide_col, spacer_col = st.columns([0.25, 0.75])
+with guide_col:
     if st.session_state["show_tutorial"]:
         if st.button("Dismiss guide", use_container_width=True):
             st.session_state["show_tutorial"] = False
