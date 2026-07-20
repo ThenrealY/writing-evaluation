@@ -53,7 +53,7 @@ st.markdown(
 
     .stApp {
         background:
-            linear-gradient(135deg, #f2f4f5 0%, #edf7ef 44%, #f8faf8 100%);
+            linear-gradient(135deg, #f0fff4 0%, #c8efd5 34%, #5fac7c 68%, #0f5132 100%);
         color: var(--text);
     }
 
@@ -124,7 +124,7 @@ st.markdown(
     .quest-shell {
         border: 1px solid var(--line);
         border-radius: 8px;
-        background: rgba(255, 255, 255, 0.94);
+        background: rgba(255, 255, 255, 0.97);
         padding: 1.15rem;
         margin-bottom: 1rem;
         box-shadow: var(--shadow);
@@ -366,7 +366,7 @@ st.markdown(
     .mission-panel {
         border: 1px solid var(--line);
         border-radius: 8px;
-        background: rgba(255, 255, 255, 0.92);
+        background: rgba(255, 255, 255, 0.97);
         padding: 1rem;
         margin-bottom: 1rem;
     }
@@ -388,17 +388,26 @@ st.markdown(
         background: #ffffff;
     }
 
+    .stMultiSelect div[data-baseweb="tag"],
+    [data-testid="stSidebar"] .stMultiSelect div[data-baseweb="tag"],
     div[data-baseweb="tag"] {
-        background: var(--green-soft) !important;
-        border: 1px solid #bfe1d3 !important;
+        background-color: #eaf8ef !important;
+        background: #eaf8ef !important;
+        border: 1px solid #9fd5b4 !important;
         border-radius: 8px !important;
+        box-shadow: none !important;
     }
 
-    div[data-baseweb="tag"] span {
+    .stMultiSelect div[data-baseweb="tag"] *,
+    [data-testid="stSidebar"] .stMultiSelect div[data-baseweb="tag"] *,
+    div[data-baseweb="tag"] span,
+    div[data-baseweb="tag"] div {
         color: #14532d !important;
         font-weight: 700 !important;
     }
 
+    .stMultiSelect div[data-baseweb="tag"] svg,
+    [data-testid="stSidebar"] .stMultiSelect div[data-baseweb="tag"] svg,
     div[data-baseweb="tag"] svg {
         color: #14532d !important;
         fill: #14532d !important;
@@ -537,7 +546,7 @@ def level_from_xp(xp: int) -> str:
 def clean_markdown(text: str) -> str:
     text = re.sub(r"\*\*(.*?)\*\*", r"\1", text)
     text = re.sub(r"`([^`]*)`", r"\1", text)
-    text = re.sub(r"^\s*[-*]\s+", "• ", text, flags=re.MULTILINE)
+    text = re.sub(r"^\s*[-*]\s+", "- ", text, flags=re.MULTILINE)
     return text
 
 
