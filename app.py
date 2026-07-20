@@ -269,10 +269,18 @@ st.markdown(
 
     .stButton > button,
     .stDownloadButton > button {
+        background: #ffffff !important;
+        border: 1px solid #b7e4c7 !important;
         border-radius: 10px !important;
+        color: #065f46 !important;
         min-height: 2.65rem;
         font-weight: 700 !important;
         transition: all 0.2s ease;
+    }
+
+    .stButton > button *,
+    .stDownloadButton > button * {
+        color: inherit !important;
     }
 
     .stButton > button[kind="primary"] {
@@ -296,12 +304,41 @@ st.markdown(
         background: #ffffff;
     }
 
+    .stButton > button[kind="primary"] * {
+        color: #ffffff !important;
+    }
+
     .stTextInput input,
+    .stTextArea textarea,
     .stSelectbox div[data-baseweb="select"],
     .stMultiSelect div[data-baseweb="select"] {
         border-radius: 12px;
-        border-color: var(--border);
-        background: #ffffff;
+        border-color: var(--border) !important;
+        background: #ffffff !important;
+        color: #111827 !important;
+    }
+
+    .stSelectbox div[data-baseweb="select"] *,
+    .stMultiSelect div[data-baseweb="select"] *,
+    section[data-testid="stSidebar"] .stSelectbox div[data-baseweb="select"] *,
+    section[data-testid="stSidebar"] .stMultiSelect div[data-baseweb="select"] * {
+        color: #111827 !important;
+    }
+
+    .stSelectbox div[data-baseweb="select"] > div,
+    .stMultiSelect div[data-baseweb="select"] > div,
+    section[data-testid="stSidebar"] .stSelectbox div[data-baseweb="select"] > div,
+    section[data-testid="stSidebar"] .stMultiSelect div[data-baseweb="select"] > div {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+    }
+
+    .stSelectbox div[data-baseweb="select"] svg,
+    .stMultiSelect div[data-baseweb="select"] svg,
+    section[data-testid="stSidebar"] .stSelectbox div[data-baseweb="select"] svg,
+    section[data-testid="stSidebar"] .stMultiSelect div[data-baseweb="select"] svg {
+        color: #111827 !important;
+        fill: #111827 !important;
     }
 
     .stMultiSelect div[data-baseweb="tag"],
