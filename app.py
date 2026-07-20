@@ -36,354 +36,194 @@ st.set_page_config(
 st.markdown(
     """
     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
     :root {
-        --text: #1f2937;
-        --muted: #6b7280;
-        --line: #d7ded9;
-        --page: #f3f7f4;
-        --panel: #ffffff;
-        --panel-soft: #f7faf7;
-        --green: #16835f;
-        --green-soft: #e8f6ef;
-        --teal: #167d86;
-        --red: #c23b3b;
-        --amber: #b7791f;
-        --shadow: 0 16px 38px rgba(31, 41, 55, 0.08);
+        --primary: #10b981;
+        --primary-dark: #059669;
+        --primary-soft: #d1fae5;
+        --bg-main: #f9fafb;
+        --surface: #ffffff;
+        --text-main: #111827;
+        --text-muted: #6b7280;
+        --border: #e5e7eb;
+        --danger: #dc2626;
+        --warning: #b45309;
+        --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     }
 
     .stApp {
-        background:
-            linear-gradient(120deg, #effff3 0%, #b7ecc7 26%, #4fa86e 54%, #127346 76%, #06351f 100%);
-        background-size: 260% 260%;
-        background-attachment: fixed;
-        animation: movingGreenGradient 18s ease-in-out infinite alternate;
-        color: var(--text);
-    }
-
-    @keyframes movingGreenGradient {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 35%; }
-        100% { background-position: 35% 100%; }
+        background-color: var(--bg-main);
+        color: var(--text-main);
+        font-family: 'Inter', sans-serif;
     }
 
     .main .block-container {
-        max-width: 1220px;
-        padding-top: 1.35rem;
+        max-width: 1180px;
+        padding-top: 1.6rem;
         padding-bottom: 3rem;
     }
 
     h1, h2, h3, label {
-        color: var(--text);
+        color: var(--text-main);
         letter-spacing: 0;
     }
 
-    [data-testid="stSidebar"] {
-        background:
-            linear-gradient(180deg, #ffffff 0%, #f4faf6 100%);
-        border-right: 1px solid var(--line);
+    section[data-testid="stSidebar"] {
+        background-color: #ffffff !important;
+        border-right: 1px solid var(--border);
     }
 
-    [data-testid="stSidebar"] * {
-        color: var(--text);
+    section[data-testid="stSidebar"] * {
+        color: var(--text-main);
     }
 
-    [data-testid="stSidebar"] .stMarkdown p,
-    [data-testid="stSidebar"] label p {
-        color: var(--text);
-        font-weight: 650;
+    section[data-testid="stSidebar"] label p,
+    section[data-testid="stSidebar"] .stMarkdown p {
+        color: var(--text-main);
+        font-weight: 600;
     }
 
     .brand-card {
         display: flex;
         align-items: center;
         gap: 0.75rem;
-        border: 1px solid #cfe2d6;
-        border-radius: 8px;
-        background: #ffffff;
-        padding: 0.82rem;
-        margin: 0.15rem 0 1rem;
-        box-shadow: 0 10px 28px rgba(22, 131, 95, 0.08);
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 0.9rem;
+        margin: 0.1rem 0 1rem;
+        box-shadow: var(--shadow);
     }
 
     .brand-mark {
-        width: 44px;
-        height: 44px;
-        border-radius: 8px;
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
         display: grid;
         place-items: center;
-        background: linear-gradient(135deg, #16835f, #8fd4a8);
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
         color: #ffffff;
-        font-weight: 900;
-        letter-spacing: 0;
+        font-weight: 800;
     }
 
     .brand-title {
         font-size: 0.98rem;
-        font-weight: 850;
+        font-weight: 800;
         line-height: 1.15;
     }
 
     .brand-subtitle {
-        color: var(--muted);
+        color: var(--text-muted);
         font-size: 0.78rem;
         line-height: 1.3;
         margin-top: 0.15rem;
     }
 
-    .quest-shell {
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.97);
-        padding: 1.15rem;
+    .app-title {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        line-height: 1;
+        font-weight: 800;
+    }
+
+    .app-subtitle {
+        color: var(--text-muted);
+        font-size: 1rem;
+        line-height: 1.55;
+        max-width: 760px;
+        margin-top: 0.55rem;
+    }
+
+    .level-line {
+        color: var(--text-muted);
+        font-weight: 700;
+        margin-top: 0.85rem;
+    }
+
+    .glass-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.5rem;
         margin-bottom: 1rem;
         box-shadow: var(--shadow);
     }
 
-    .hero-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1.55fr) minmax(290px, 0.72fr);
-        gap: 1rem;
-        align-items: stretch;
-    }
-
-    .hero-title {
-        margin: 0.25rem 0 0.55rem;
-        font-size: clamp(2rem, 4vw, 3.7rem);
-        line-height: 1;
-        font-weight: 900;
-    }
-
-    .hero-copy {
-        max-width: 760px;
-        color: #4b5563;
-        font-size: 1rem;
-        line-height: 1.65;
-        margin: 0;
-    }
-
-    .kicker {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        color: #4b5563;
-        font-size: 0.76rem;
-        font-weight: 850;
-        text-transform: uppercase;
-    }
-
-    .quest-board {
-        border: 1px solid #cfe2d6;
-        border-radius: 8px;
-        background: #f8fcf9;
-        padding: 0.95rem;
-    }
-
-    .quest-map {
-        display: grid;
-        gap: 0.55rem;
-        margin-top: 0.65rem;
-    }
-
-    .quest-item {
+    .metric-row {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 0.75rem;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        padding: 0.72rem 0.78rem;
-        background: #ffffff;
-        font-size: 0.9rem;
-        font-weight: 750;
-    }
-
-    .quest-item small {
-        color: var(--muted);
-        font-weight: 650;
-    }
-
-    .status-dot {
-        width: 0.62rem;
-        height: 0.62rem;
-        border-radius: 999px;
-        display: inline-block;
-        flex: 0 0 auto;
-    }
-
-    .green { background: var(--green); }
-    .teal { background: var(--teal); }
-    .red { background: var(--red); }
-    .amber { background: var(--amber); }
-    .grey { background: #6b7280; }
-
-    .tutorial-panel {
-        border: 1px solid #bfe1d3;
-        border-radius: 8px;
-        background: #ffffff;
-        padding: 1rem;
-        margin-bottom: 1rem;
-        box-shadow: 0 12px 28px rgba(22, 131, 95, 0.07);
-    }
-
-    .tutorial-header {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
         gap: 1rem;
-        margin-bottom: 0.65rem;
+        margin: 1rem 0 1.5rem;
+        overflow-x: auto;
+        padding-bottom: 0.15rem;
     }
 
-    .tutorial-header h2 {
-        margin: 0;
-        font-size: 1.15rem;
-        font-weight: 850;
-    }
-
-    .tutorial-grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 0.75rem;
-    }
-
-    .tutorial-step {
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: #f8fcf9;
-        padding: 0.82rem;
-        min-height: 132px;
-    }
-
-    .step-number {
-        width: 30px;
-        height: 30px;
-        border-radius: 999px;
-        display: grid;
-        place-items: center;
-        background: var(--green);
-        color: #ffffff;
-        font-weight: 850;
-        margin-bottom: 0.55rem;
-    }
-
-    .tutorial-step strong {
-        display: block;
-        margin-bottom: 0.28rem;
-    }
-
-    .tutorial-step small {
-        color: var(--muted);
-        line-height: 1.45;
-    }
-
-    .dashboard-grid {
-        display: grid;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-        gap: 0.75rem;
-        margin: 0.85rem 0 1rem;
-    }
-
-    .metric-card {
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        padding: 0.85rem 0.95rem;
+    .mini-metric {
         background: #ffffff;
-        min-height: 94px;
+        border: 1px solid var(--border);
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        min-width: 145px;
+        box-shadow: var(--shadow);
     }
 
-    .metric-card span {
+    .mini-metric label {
         display: block;
-        color: var(--muted);
-        font-size: 0.76rem;
-        line-height: 1.2;
+        font-size: 0.7rem;
         font-weight: 800;
+        color: var(--text-muted);
         text-transform: uppercase;
+        margin-bottom: 4px;
     }
 
-    .metric-card strong {
-        color: var(--text);
+    .mini-metric span {
         display: block;
-        font-size: 1.12rem;
-        margin-top: 0.28rem;
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: var(--text-main);
         overflow-wrap: anywhere;
     }
 
-    .metric-card small {
-        color: var(--muted);
-        display: block;
-        margin-top: 0.25rem;
-        line-height: 1.35;
-    }
-
-    .progress-track {
-        height: 0.6rem;
-        border-radius: 999px;
-        border: 1px solid #cfe2d6;
-        background: #edf2ef;
-        overflow: hidden;
+    .xp-bar-bg {
+        background: #e5e7eb;
+        height: 7px;
+        border-radius: 10px;
         margin-top: 0.55rem;
+        max-width: 520px;
+        overflow: hidden;
     }
 
-    .progress-fill {
+    .xp-bar-fill {
+        background: var(--primary);
         height: 100%;
-        border-radius: 999px;
-        background: linear-gradient(90deg, #16835f, #9bd8ad);
+        border-radius: 10px;
+        transition: width 0.5s ease;
     }
 
-    .info-alert,
-    .setup-alert,
-    .success-alert {
-        border-radius: 8px;
-        padding: 0.9rem 1rem;
-        margin: 0.65rem 0 1rem;
-        line-height: 1.55;
+    .stButton > button,
+    .stDownloadButton > button {
+        border-radius: 8px !important;
+        min-height: 2.65rem;
+        font-weight: 700 !important;
+        transition: all 0.2s ease;
     }
 
-    .info-alert {
-        border: 1px solid #cfd8e3;
-        border-left: 5px solid #6b7280;
-        background: #ffffff;
-        color: var(--text);
+    .stButton > button[kind="primary"] {
+        background: var(--primary) !important;
+        border: none !important;
+        color: #ffffff !important;
     }
 
-    .setup-alert {
-        border: 1px solid #f0c6c6;
-        border-left: 5px solid var(--red);
-        background: #fff8f8;
-        color: #7f1d1d;
-    }
-
-    .success-alert {
-        border: 1px solid #bfe1d3;
-        border-left: 5px solid var(--green);
-        background: #f6fbf8;
-        color: #14532d;
-    }
-
-    .api-help {
-        border: 1px solid #f0c6c6;
-        border-radius: 8px;
-        background: #fff8f8;
-        padding: 1rem;
-        color: #7f1d1d;
-        line-height: 1.55;
-    }
-
-    .api-help ul {
-        margin-bottom: 0;
-    }
-
-    .mission-panel {
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.97);
-        padding: 1rem;
-        margin-bottom: 1rem;
+    .stButton > button:hover,
+    .stDownloadButton > button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
     }
 
     .stTextArea textarea {
         border-radius: 8px;
-        border-color: #cfd8e3;
-        min-height: 330px;
+        border-color: var(--border);
+        min-height: 400px;
         font-size: 1rem;
         line-height: 1.55;
         background: #ffffff;
@@ -393,22 +233,22 @@ st.markdown(
     .stSelectbox div[data-baseweb="select"],
     .stMultiSelect div[data-baseweb="select"] {
         border-radius: 8px;
-        border-color: #cfd8e3;
+        border-color: var(--border);
         background: #ffffff;
     }
 
     .stMultiSelect div[data-baseweb="tag"],
-    [data-testid="stSidebar"] .stMultiSelect div[data-baseweb="tag"],
+    section[data-testid="stSidebar"] .stMultiSelect div[data-baseweb="tag"],
     div[data-baseweb="tag"] {
-        background-color: #0f6d4c !important;
-        background: #0f6d4c !important;
-        border: 1px solid #0b5138 !important;
+        background: var(--primary-dark) !important;
+        background-color: var(--primary-dark) !important;
+        border: 1px solid #047857 !important;
         border-radius: 8px !important;
         box-shadow: none !important;
     }
 
     .stMultiSelect div[data-baseweb="tag"] *,
-    [data-testid="stSidebar"] .stMultiSelect div[data-baseweb="tag"] *,
+    section[data-testid="stSidebar"] .stMultiSelect div[data-baseweb="tag"] *,
     div[data-baseweb="tag"] span,
     div[data-baseweb="tag"] div,
     div[data-baseweb="tag"] p {
@@ -417,63 +257,72 @@ st.markdown(
     }
 
     .stMultiSelect div[data-baseweb="tag"] svg,
-    [data-testid="stSidebar"] .stMultiSelect div[data-baseweb="tag"] svg,
+    section[data-testid="stSidebar"] .stMultiSelect div[data-baseweb="tag"] svg,
     div[data-baseweb="tag"] svg,
     div[data-baseweb="tag"] path {
         color: #ffffff !important;
         fill: #ffffff !important;
     }
 
-    .stButton > button,
-    .stDownloadButton > button {
-        border-radius: 8px;
-        min-height: 2.65rem;
-        font-weight: 750;
-        letter-spacing: 0;
-    }
-
-    .stButton > button[kind="primary"] {
-        background: #16835f;
-        border: 1px solid #16835f;
-        color: #ffffff;
-    }
-
-    .stButton > button[kind="primary"]:hover {
-        background: #126b4f;
-        border-color: #126b4f;
-        color: #ffffff;
-    }
-
-    div[data-testid="stTabs"] button {
-        font-weight: 750;
-    }
-
-    .report-frame {
-        border: 1px solid var(--line);
-        border-radius: 8px;
+    .report-output {
         background: #ffffff;
-        padding: 1rem;
-        margin-top: 0.65rem;
+        padding: 2rem;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        line-height: 1.6;
+        box-shadow: var(--shadow);
     }
 
-    @media (max-width: 980px) {
-        .hero-grid,
-        .tutorial-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .dashboard-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
+    .setup-alert,
+    .api-help,
+    .soft-alert {
+        border-radius: 8px;
+        padding: 0.9rem 1rem;
+        margin: 0.85rem 0 1rem;
+        line-height: 1.55;
+        background: #ffffff;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
     }
 
-    @media (max-width: 620px) {
-        .dashboard-grid {
-            grid-template-columns: 1fr;
-        }
+    .setup-alert {
+        border-left: 5px solid var(--danger);
+        color: #7f1d1d;
+    }
 
-        .tutorial-header {
+    .api-help {
+        border-left: 5px solid var(--danger);
+        color: #7f1d1d;
+    }
+
+    .soft-alert {
+        border-left: 5px solid var(--primary);
+        color: var(--text-main);
+    }
+
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 0.5rem;
+    }
+
+    .stTabs [data-baseweb="tab"] {
+        border-radius: 8px 8px 0 0;
+        font-weight: 700;
+    }
+
+    div[data-testid="stExpander"] {
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+    }
+
+    @media (max-width: 760px) {
+        .metric-row {
             flex-direction: column;
+        }
+
+        .mini-metric {
+            min-width: 100%;
         }
     }
     </style>
@@ -514,24 +363,24 @@ def has_real_key(value: str | None) -> bool:
     return not any(fragment in value.lower() for fragment in blocked_fragments)
 
 
-def key_label(value: str | None) -> tuple[str, str, str]:
+def key_label(value: str | None) -> tuple[str, str]:
     if not has_real_key(value):
-        return "Missing", "red", "Add your Gemini key in secrets."
+        return "Missing", "Add your Gemini key in secrets."
     if value.startswith("AQ."):
-        return "Auth key", "teal", "Uses Gemini Interactions API."
+        return "Connected", "Gemini credential detected."
     if value.startswith("AIza"):
-        return "Standard key", "green", "Uses Gemini API key auth."
-    return "Custom key", "amber", "If it fails, create a new AI Studio key."
+        return "Connected", "Gemini API key detected."
+    return "Check key", "If evaluation fails, create a fresh AI Studio key."
 
 
-def quality_label(words: int, characters: int) -> tuple[str, str, str]:
+def quality_label(words: int, characters: int) -> tuple[str, str]:
     if characters > MAX_CHARACTERS:
-        return "Over limit", "red", "Shorten the draft before evaluating."
+        return "Over limit", "Shorten the draft before evaluating."
     if words < 50:
-        return "Short draft", "amber", "Add more context for richer feedback."
+        return "Short draft", "Add more context for richer feedback."
     if words < 180:
-        return "Ready", "green", "Good length for focused feedback."
-    return "Deep review", "teal", "Enough text for detailed analysis."
+        return "Ready", "Good length for focused feedback."
+    return "Deep review", "Enough text for detailed analysis."
 
 
 def calculate_xp(words: int, rubric_count: int, has_purpose: bool, has_report: bool) -> int:
@@ -580,7 +429,7 @@ def make_pdf_report(report: str, context: dict[str, str], stats: dict[str, str])
         fontName="Helvetica-Bold",
         fontSize=22,
         leading=26,
-        textColor=colors.HexColor("#14532d"),
+        textColor=colors.HexColor("#059669"),
         spaceAfter=8,
     )
     subtitle_style = ParagraphStyle(
@@ -597,7 +446,7 @@ def make_pdf_report(report: str, context: dict[str, str], stats: dict[str, str])
         fontName="Helvetica-Bold",
         fontSize=13,
         leading=16,
-        textColor=colors.HexColor("#1f2937"),
+        textColor=colors.HexColor("#111827"),
         spaceBefore=12,
         spaceAfter=6,
     )
@@ -606,7 +455,7 @@ def make_pdf_report(report: str, context: dict[str, str], stats: dict[str, str])
         parent=styles["BodyText"],
         fontSize=9.4,
         leading=13,
-        textColor=colors.HexColor("#1f2937"),
+        textColor=colors.HexColor("#111827"),
         spaceAfter=6,
     )
 
@@ -623,13 +472,13 @@ def make_pdf_report(report: str, context: dict[str, str], stats: dict[str, str])
     table.setStyle(
         TableStyle(
             [
-                ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#e8f6ef")),
-                ("TEXTCOLOR", (0, 0), (-1, 0), colors.HexColor("#14532d")),
+                ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#d1fae5")),
+                ("TEXTCOLOR", (0, 0), (-1, 0), colors.HexColor("#065f46")),
                 ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
                 ("FONTNAME", (0, 1), (0, -1), "Helvetica-Bold"),
                 ("FONTSIZE", (0, 0), (-1, -1), 8.5),
                 ("LEADING", (0, 0), (-1, -1), 11),
-                ("GRID", (0, 0), (-1, -1), 0.35, colors.HexColor("#d7ded9")),
+                ("GRID", (0, 0), (-1, -1), 0.35, colors.HexColor("#e5e7eb")),
                 ("BACKGROUND", (0, 1), (-1, -1), colors.white),
                 ("VALIGN", (0, 0), (-1, -1), "TOP"),
                 ("TOPPADDING", (0, 0), (-1, -1), 6),
@@ -809,7 +658,7 @@ def generate_report(
 api_key = get_setting("GEMINI_API_KEY")
 model_name = get_setting("GEMINI_MODEL", DEFAULT_MODEL)
 api_ready = has_real_key(api_key)
-api_status, api_status_color, api_status_note = key_label(api_key)
+api_status, api_status_note = key_label(api_key)
 
 if "writing_sample" not in st.session_state:
     st.session_state["writing_sample"] = ""
@@ -826,7 +675,7 @@ with st.sidebar:
             <div class="brand-mark">WQ</div>
             <div>
                 <div class="brand-title">Writing Quest</div>
-                <div class="brand-subtitle">Academic evaluator and revision game</div>
+                <div class="brand-subtitle">Academic evaluator and revision studio</div>
             </div>
         </div>
         """,
@@ -938,80 +787,47 @@ xp = calculate_xp(words, len(rubric_focus), bool(purpose.strip()), "latest_repor
 level = level_from_xp(xp)
 xp_percent = int((xp / 500) * 100)
 
-st.markdown(
-    f"""
-    <section class="quest-shell hero-grid">
-        <div>
-            <div class="kicker"><span class="status-dot green"></span> Writing Quest Studio</div>
-            <h1 class="hero-title">Level up your draft.</h1>
-            <p class="hero-copy">
-                Treat every evaluation like a mission: paste a draft, choose your challenge settings,
-                unlock academic feedback, then export a polished PDF report.
-            </p>
-        </div>
-        <aside class="quest-board">
-            <div class="kicker">Quest map</div>
-            <div class="quest-map">
-                <div class="quest-item"><span><span class="status-dot green"></span> Paste draft</span><small>+XP</small></div>
-                <div class="quest-item"><span><span class="status-dot teal"></span> Set rubric</span><small>Focus</small></div>
-                <div class="quest-item"><span><span class="status-dot amber"></span> Evaluate</span><small>Report</small></div>
-                <div class="quest-item"><span><span class="status-dot red"></span> Export PDF</span><small>Finish</small></div>
-            </div>
-        </aside>
-    </section>
-    """,
-    unsafe_allow_html=True,
-)
-
-if st.session_state["show_tutorial"]:
+header_left, header_right = st.columns([2.1, 0.9])
+with header_left:
+    st.markdown('<h1 class="app-title">Writing Quest Studio</h1>', unsafe_allow_html=True)
     st.markdown(
         """
-        <section class="tutorial-panel">
-            <div class="tutorial-header">
-                <div>
-                    <div class="kicker"><span class="status-dot teal"></span> New player guide</div>
-                    <h2>How to complete your first evaluation mission</h2>
-                </div>
-            </div>
-            <div class="tutorial-grid">
-                <div class="tutorial-step">
-                    <div class="step-number">1</div>
-                    <strong>Choose mission settings</strong>
-                    <small>Use the sidebar to set audience, benchmark, tone, and rubric focus.</small>
-                </div>
-                <div class="tutorial-step">
-                    <div class="step-number">2</div>
-                    <strong>Paste your draft</strong>
-                    <small>Add your essay, article, report, email, or paragraph into the writing field.</small>
-                </div>
-                <div class="tutorial-step">
-                    <div class="step-number">3</div>
-                    <strong>Run evaluation</strong>
-                    <small>Click Evaluate writing to unlock the scorecard, feedback, and revision plan.</small>
-                </div>
-                <div class="tutorial-step">
-                    <div class="step-number">4</div>
-                    <strong>Download PDF</strong>
-                    <small>Open the Export tab and save a designed report for review or submission.</small>
-                </div>
-            </div>
-        </section>
+        <div class="app-subtitle">
+            A clean academic writing evaluator for essays, reports, emails, and revision coaching.
+        </div>
         """,
         unsafe_allow_html=True,
     )
-    skip_col, hide_col = st.columns([1, 1])
-    with skip_col:
-        if st.button("Skip tutorial", use_container_width=True):
+    st.markdown(
+        f"""
+        <div class="level-line">Level: {level} | {xp}/500 XP</div>
+        <div class="xp-bar-bg"><div class="xp-bar-fill" style="width:{xp_percent}%;"></div></div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+with header_right:
+    if st.session_state["show_tutorial"]:
+        if st.button("Dismiss guide", use_container_width=True):
             st.session_state["show_tutorial"] = False
             st.rerun()
-    with hide_col:
-        if st.button("I understand", use_container_width=True):
-            st.session_state["show_tutorial"] = False
+    else:
+        if st.button("Help and guide", use_container_width=True):
+            st.session_state["show_tutorial"] = True
             st.rerun()
-else:
-    if st.button("Show tutorial again", use_container_width=False):
-        st.session_state["show_tutorial"] = True
-        st.rerun()
+
+if st.session_state["show_tutorial"]:
+    with st.expander("Quick Start Guide", expanded=True):
+        cols = st.columns(4)
+        steps = [
+            ("1. Setup", "Configure sidebar settings."),
+            ("2. Draft", "Paste text in the Mission tab."),
+            ("3. Analyze", "Click Evaluate writing."),
+            ("4. Export", "Download your PDF report."),
+        ]
+        for col, (title, desc) in zip(cols, steps):
+            col.markdown(f"**{title}**")
+            col.caption(desc)
 
 if not api_ready:
     st.markdown(
@@ -1024,46 +840,15 @@ if not api_ready:
         """,
         unsafe_allow_html=True,
     )
-else:
-    st.markdown(
-        f"""
-        <div class="success-alert">
-            <strong>Gemini credential detected.</strong>
-            Status: <strong>{api_status}</strong>. {api_status_note}
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
 
 st.markdown(
     f"""
-    <div class="dashboard-grid">
-        <div class="metric-card">
-            <span>Explorer level</span>
-            <strong>{level}</strong>
-            <div class="progress-track"><div class="progress-fill" style="width:{xp_percent}%;"></div></div>
-            <small>{xp} / 500 XP</small>
-        </div>
-        <div class="metric-card">
-            <span>Words</span>
-            <strong>{words}</strong>
-            <small>Draft energy</small>
-        </div>
-        <div class="metric-card">
-            <span>Characters</span>
-            <strong>{characters:,}</strong>
-            <small>{MAX_CHARACTERS:,} character limit</small>
-        </div>
-        <div class="metric-card">
-            <span>API status</span>
-            <strong><span class="status-dot {api_status_color}" style="margin-right:.35rem;"></span>{api_status}</strong>
-            <small>{model_name}</small>
-        </div>
-        <div class="metric-card">
-            <span>Runs</span>
-            <strong>{st.session_state["completed_runs"]}</strong>
-            <small>Completed missions</small>
-        </div>
+    <div class="metric-row">
+        <div class="mini-metric"><label>Words</label><span>{words}</span></div>
+        <div class="mini-metric"><label>Characters</label><span>{characters:,}</span></div>
+        <div class="mini-metric"><label>Runs</label><span>{st.session_state["completed_runs"]}</span></div>
+        <div class="mini-metric"><label>Status</label><span>{api_status}</span></div>
+        <div class="mini-metric"><label>Model</label><span>{model_name}</span></div>
     </div>
     """,
     unsafe_allow_html=True,
@@ -1072,54 +857,52 @@ st.markdown(
 mission_tab, result_tab, export_tab = st.tabs(["Mission", "Report", "Export"])
 
 with mission_tab:
-    st.markdown('<section class="mission-panel">', unsafe_allow_html=True)
-    toolbar_left, toolbar_right = st.columns([1, 1])
-    with toolbar_left:
-        if st.button("Load sample draft", use_container_width=True):
-            st.session_state["writing_sample"] = SAMPLE_TEXT
-            st.rerun()
-    with toolbar_right:
-        if st.button("Clear draft", use_container_width=True):
-            st.session_state["writing_sample"] = ""
-            st.rerun()
+    with st.container(border=True):
+        c1, c2 = st.columns([1, 1])
+        with c1:
+            if st.button("Load sample draft", use_container_width=True):
+                st.session_state["writing_sample"] = SAMPLE_TEXT
+                st.rerun()
+        with c2:
+            if st.button("Clear draft", use_container_width=True):
+                st.session_state["writing_sample"] = ""
+                st.rerun()
 
-    user_text = st.text_area(
-        "Writing sample",
-        key="writing_sample",
-        height=330,
-        placeholder="Paste or write the essay, email, article, report, or paragraph you want evaluated.",
-    )
+        user_text = st.text_area(
+            "Input draft",
+            key="writing_sample",
+            height=400,
+            placeholder="Paste your writing here.",
+        )
 
-    words = count_words(user_text)
-    characters = len(user_text)
-    status_text, status_color, status_note = quality_label(words, characters)
-    over_limit = characters > MAX_CHARACTERS
+        words = count_words(user_text)
+        characters = len(user_text)
+        status_text, status_note = quality_label(words, characters)
+        over_limit = characters > MAX_CHARACTERS
 
-    st.markdown(
-        f"""
-        <div class="info-alert">
-            <strong><span class="status-dot {status_color}" style="margin-right:.35rem;"></span>{status_text}.</strong>
-            {status_note}
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+        st.markdown(
+            f"""
+            <div class="soft-alert">
+                <strong>{status_text}.</strong> {status_note}
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
-    if over_limit:
-        st.warning(f"Your draft is {characters:,} characters. Please keep it under {MAX_CHARACTERS:,} characters.")
+        if over_limit:
+            st.warning(f"Your draft is {characters:,} characters. Please keep it under {MAX_CHARACTERS:,} characters.")
 
-    can_evaluate = bool(user_text.strip()) and not over_limit and api_ready
+        can_evaluate = bool(user_text.strip()) and not over_limit and api_ready
 
-    evaluate = st.button(
-        "Evaluate writing",
-        type="primary",
-        use_container_width=True,
-        disabled=not can_evaluate,
-    )
-    st.markdown("</section>", unsafe_allow_html=True)
+        evaluate = st.button(
+            "Run evaluation mission",
+            type="primary",
+            use_container_width=True,
+            disabled=not can_evaluate,
+        )
 
     if evaluate:
-        with st.spinner("Evaluating writing and building your quest report..."):
+        with st.spinner("Evaluating writing and building your report..."):
             try:
                 report = generate_report(
                     client=get_client(api_key or ""),
@@ -1171,21 +954,21 @@ with mission_tab:
                     ),
                     "Completed runs": str(st.session_state["completed_runs"]),
                 }
-                st.success("Mission complete. Open the Report tab to review your feedback.")
+                st.success("Evaluation complete. Open the Report tab to review your feedback.")
 
 with result_tab:
     if "latest_report" not in st.session_state:
         st.markdown(
             """
-            <div class="info-alert">
-                <strong>No report unlocked yet.</strong>
+            <div class="soft-alert">
+                <strong>No report yet.</strong>
                 Complete an evaluation mission first, then your feedback will appear here.
             </div>
             """,
             unsafe_allow_html=True,
         )
     else:
-        st.markdown('<div class="report-frame">', unsafe_allow_html=True)
+        st.markdown('<div class="report-output">', unsafe_allow_html=True)
         st.markdown(st.session_state["latest_report"])
         st.markdown("</div>", unsafe_allow_html=True)
 
@@ -1193,7 +976,7 @@ with export_tab:
     if "latest_report" not in st.session_state:
         st.markdown(
             """
-            <div class="info-alert">
+            <div class="soft-alert">
                 <strong>PDF export locked.</strong>
                 Run an evaluation first to create a downloadable report.
             </div>
