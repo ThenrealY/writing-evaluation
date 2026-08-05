@@ -1171,7 +1171,9 @@ with mission_tab:
                 st.success("Evaluation complete. Open the Report tab to review your feedback.")
 
 with result_tab:
-    if "latest_report" not in st.session_state:
+    latest_report = st.session_state.get("latest_report", "").strip()
+
+    if not latest_report:
         st.markdown(
             """
             <div class="soft-alert">
@@ -1182,12 +1184,16 @@ with result_tab:
             unsafe_allow_html=True,
         )
     else:
-        st.markdown('<div class="report-output">', unsafe_allow_html=True)
-        st.markdown(st.session_state["latest_report"])
-        st.markdown("</div>", unsafe_allow_html=True)
+        with st.container(border=True):
+            st.markdown("### Evaluation report")
+            if st.session_state.get("latest_report_time"):
+                st.caption(f"Generated {st.session_state['latest_report_time']}")
+            st.markdown(latest_report)
 
 with export_tab:
-    if "latest_report" not in st.session_state:
+    latest_report = st.session_state.get("latest_report", "").strip()
+
+    if not latest_report:
         st.markdown(
             """
             <div class="soft-alert">
@@ -1201,7 +1207,7 @@ with export_tab:
         st.markdown("### Report package")
         st.table(st.session_state.get("latest_context", {}))
         pdf_bytes = make_pdf_report(
-            report=st.session_state["latest_report"],
+            report=latest_report,
             context=st.session_state.get("latest_context", {}),
             stats=st.session_state.get("latest_stats", {}),
         )
